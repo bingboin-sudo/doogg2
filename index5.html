@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaking Dog with Sound</title>
+    <style>
+        body {
+            font-family: monospace;
+            background-color: #282c34;
+            color: #61dafb;
+            text-align: center;
+            padding-top: 50px;
+            white-space: pre;
+            overflow: hidden;
+        }
+
+        /* اضافه کردن افکت لرزش */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(10px); }
+        }
+
+        /* طراحی بهتر سگ */
+        .shaking {
+            font-size: 24px;  /* اندازه بزرگتر */
+            line-height: 1.2;  /* فاصله خطوط تنظیم شده */
+            display: inline-block;
+            animation: shake 0.3s ease-in-out infinite;
+            padding: 20px;  /* فضای اطراف سگ */
+            border-radius: 10px;  /* گوشه‌های گرد */
+            background-color: rgba(255, 255, 255, 0.1);  /* پس‌زمینه نیمه‌شفاف */
+            transition: transform 0.2s ease-in-out; /* انیمیشن برای تغییرات */
+        }
+
+        /* زمانی که موس روی سگ می‌رود، رنگ پس‌زمینه تغییر کند */
+        .shaking:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1); /* کمی بزرگتر کردن */
+        }
+
+        audio {
+            display: none; /* مخفی کردن پخش‌کننده صدا */
+        }
+    </style>
+</head>
+<body>
+    <!-- هنر ASCII سگ -->
+    <div class="shaking" onmouseover="playSound()">
+        / \\__ <br>
+        (    @\\___ <br>
+        /         O <br>
+        /   (_) <br>
+        /_/   U
+    </div>
+
+    <!-- فایل صوتی با preload -->
+    <audio id="shake-sound" preload="auto">
+        <source src="Baha Men - Who Let The Dogs Out.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function playSound() {
+            const sound = document.getElementById("shake-sound");
+            sound.play(); // پخش صدا
+        }
+    </script>
+</body>
+</html>
